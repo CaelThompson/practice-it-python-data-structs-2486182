@@ -1,6 +1,10 @@
-
+from collections import deque
 def main():
-    #add code here
+    food = deque(maxlen=5)
+    food.append("STA001")
+    orderFood = ["STA002", "SAL001", "DES004", "STA003"]
+    food.extend(orderFood)
+    print(food)
     return
 
 if __name__ == "__main__":

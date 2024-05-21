@@ -1,7 +1,25 @@
 from collections import namedtuple
-
+from collections import defaultdict
+from pprint import pprint
+def getDict(list_to_cat):
+    res = defaultdict(lambda: set())
+    for i in list_to_cat:
+        cat = i.identifier[0:3]
+        match cat:
+            case "STA":
+                res["starter"].add(i)
+            case "BEV":
+                res["Beverages"].add(i)
+            case "SAL":
+                res["Salad"].add(i)
+            case "ENT":
+                res["Entrees"].add(i)
+            case "DES":
+                res["Dessert"].add(i)
+    return res
 def main():
     #add code here
+
     Food = namedtuple("Food", ["identifier", "name"])
 
     nadias_list = [
@@ -35,7 +53,7 @@ def main():
         Food("DES005",	"Mixed Berry Tart"),
         Food("BEV003",	"Cafe Latte"),
     ]
-
+    pprint(dict(getDict(nadias_list)))
     return
 
 if __name__ == "__main__":
